@@ -99,6 +99,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: PlayerHealth+PlayerDying, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  lastTimeDamageTaken: 0
 --- !u!114 &114412117829473378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,12 +107,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752278459137264}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 563792b6d8ade1a458aa899d9cee2b37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 114589985034945924}
+  positionHealthBar: 100
 --- !u!50 &1589882150
 Rigidbody2D:
   serializedVersion: 4
