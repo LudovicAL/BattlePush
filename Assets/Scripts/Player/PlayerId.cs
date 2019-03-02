@@ -6,6 +6,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "PlayerId", menuName = "PlayerId")]
 public class PlayerId : ScriptableObject {
     public string playerName;
+    public string team;
     public Controls controls;
 	public int currentHealth = 100;
 	public int maxHealth = 100;

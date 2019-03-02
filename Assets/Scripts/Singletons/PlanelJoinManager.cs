@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class PlanelJoinManager : MonoBehaviour {
 
-	public GameObject panelPlayerJoinedPrefab;
+    public static string REDTEAM = "Red";
+    public static string BLUETEAM = "Blue";
+    public GameObject panelPlayerJoinedPrefab;
 	public static PlanelJoinManager Instance {get; private set;}
 	public GameObject panelJoinInstruction;
 	public Transform panelPlayerJoinTransform;
@@ -46,6 +48,7 @@ public class PlanelJoinManager : MonoBehaviour {
         playerId.panelJoin = Instantiate(panelJoinedPrefab, panelJoinTransform);
         playerId.panelJoin.GetComponent<RectTransform>().localScale = Vector3.one;
         playerId.panelJoin.transform.Find("Text").GetComponent<Text>().text = playerId.playerName + " joined the "+ teamName+" Team!";
+        playerId.team = teamName;
         Canvas.ForceUpdateCanvases();
     }
 
@@ -53,11 +56,11 @@ public class PlanelJoinManager : MonoBehaviour {
         switch (team) {
             case 'r':
                 Destroy(playerId.panelJoin);
-                joinTeam(playerId, "Red", panelPlayerJoinedRedPrefab, panelPlayerJoinRedTransform);
+                joinTeam(playerId, REDTEAM, panelPlayerJoinedRedPrefab, panelPlayerJoinRedTransform);
                 break;
             case 'b':
                 Destroy(playerId.panelJoin);
-                joinTeam(playerId, "Blue", panelPlayerJoinedBluePrefab, panelPlayerJoinBlueTransform);
+                joinTeam(playerId, BLUETEAM, panelPlayerJoinedBluePrefab, panelPlayerJoinBlueTransform);
                 break;
             default:
                 Debug.Log("This is not normal");

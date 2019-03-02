@@ -73,8 +73,10 @@ public class PlayerListManager : MonoBehaviour {
 
     private void SwitchPlayerList(PlayerId playerId, List<PlayerId> listDest, List<PlayerId> listSource) {
         if (!listDest.Contains(playerId) && (listSource.Contains(playerId)|| listOfPlayersNull.Contains(playerId))) {
-            listSource.Remove(playerId);
-            listOfPlayersNull.Remove(playerId);
+            if (listSource.Contains(playerId))
+                listSource.Remove(playerId);
+            if (listOfPlayersNull.Contains(playerId))
+                listOfPlayersNull.Remove(playerId);
             listDest.Add(playerId);
             updateUIDispach(playerId, listDest);
         }
@@ -92,9 +94,12 @@ public class PlayerListManager : MonoBehaviour {
 	private void RemovePlayer(PlayerId playerId) {
         listOfAvailablePlayers.Add(playerId);
         listOfPlayers.Remove(playerId);
-        listOfPlayersBlue.Remove(playerId);
-        listOfPlayersRed.Remove(playerId);
-        listOfPlayersNull.Remove(playerId);
+        if (listOfPlayersBlue.Contains(playerId))
+            listOfPlayersBlue.Remove(playerId);
+        if (listOfPlayersRed.Contains(playerId))
+            listOfPlayersRed.Remove(playerId);
+        if (listOfPlayersNull.Contains(playerId))
+            listOfPlayersNull.Remove(playerId);
         currentPlayerCount = listOfPlayers.Count;
 		playerLeaving.Invoke(playerId);
 	}
