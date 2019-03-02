@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxNumPlayers: 15
-  text: {fileID: 0}
+  errorText: {fileID: 0}
   listOfAvailablePlayers:
   - {fileID: 11400000, guid: 18227f4100446a14d91b1b7bb7c4d20e, type: 2}
   - {fileID: 11400000, guid: 14cbff6b575a41041b9c0a00e2b0e8ba, type: 2}
@@ -75,5 +75,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: PlayerJoiningTeamEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  playerLeavingTeam:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: PlayerLeavingTeamEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   currentPlayerCount: 0
