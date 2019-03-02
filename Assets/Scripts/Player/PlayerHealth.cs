@@ -47,6 +47,7 @@ public class PlayerHealth : MonoBehaviour {
         if (player.playerId.currentHealth <= 0)
         {
             player.playerId.currentHealth = 0;
+            AudioManager.Instance.PlayClip(AudioManager.Instance.GetRandomClipFromList(AudioManager.Instance.listOfDeath));
             playerDying.Invoke(player.playerId);
         }
     }

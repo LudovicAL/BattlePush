@@ -374,6 +374,66 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4913298806939740860, guid: 2a54b5e3a334d574496a957fdb9f1f1a,
+        type: 3}
+      propertyPath: listOfDeath.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913298806939740860, guid: 2a54b5e3a334d574496a957fdb9f1f1a,
+        type: 3}
+      propertyPath: ScreamClip
+      value: 
+      objectReference: {fileID: 8300000, guid: cf29b5ff552837b4491b69a6a60c2cf1, type: 3}
+    - target: {fileID: 4913298806939740860, guid: 2a54b5e3a334d574496a957fdb9f1f1a,
+        type: 3}
+      propertyPath: listOfDeath.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 69d2833ca21193c4d8f8135e47a08ba7, type: 3}
+    - target: {fileID: 4913298806939740860, guid: 2a54b5e3a334d574496a957fdb9f1f1a,
+        type: 3}
+      propertyPath: listOfDeath.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: dc18e114ea515eb42b711c40b578b484, type: 3}
+    - target: {fileID: 4913298806939740860, guid: 2a54b5e3a334d574496a957fdb9f1f1a,
+        type: 3}
+      propertyPath: listOfDeath.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 393b3454f5332b040b58b66601d966f7, type: 3}
+    - target: {fileID: 4913298806939740860, guid: 2a54b5e3a334d574496a957fdb9f1f1a,
+        type: 3}
+      propertyPath: listOfDeath.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5b35dafb8f3f28040861832942eb07fc, type: 3}
+    - target: {fileID: 4913298806939740860, guid: 2a54b5e3a334d574496a957fdb9f1f1a,
+        type: 3}
+      propertyPath: listOfDeath.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 52e215d2e03ca4d4eb83294a8e659243, type: 3}
+    - target: {fileID: 4913298806939740860, guid: 2a54b5e3a334d574496a957fdb9f1f1a,
+        type: 3}
+      propertyPath: listOfDeath.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 41e8343b41cd84b4fa50d7d924de79dd, type: 3}
+    - target: {fileID: 4913298806939740860, guid: 2a54b5e3a334d574496a957fdb9f1f1a,
+        type: 3}
+      propertyPath: listOfDeath.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 928f5dd3afefee949a5ffeb17eef5127, type: 3}
+    - target: {fileID: 4913298806939740860, guid: 2a54b5e3a334d574496a957fdb9f1f1a,
+        type: 3}
+      propertyPath: listOfDeath.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: f60e35d29010b4b46aa6760fff0a24cc, type: 3}
+    - target: {fileID: 4913298806939740860, guid: 2a54b5e3a334d574496a957fdb9f1f1a,
+        type: 3}
+      propertyPath: listOfDeath.Array.data[8]
+      value: 
+      objectReference: {fileID: 8300000, guid: 05a2acc98a563db4dafa6f59fe75fe1e, type: 3}
+    - target: {fileID: 4913298806939740860, guid: 2a54b5e3a334d574496a957fdb9f1f1a,
+        type: 3}
+      propertyPath: listOfDeath.Array.data[9]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5e438ac95de934d4793a414c3296c922, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a54b5e3a334d574496a957fdb9f1f1a, type: 3}
 --- !u!1 &750667916
