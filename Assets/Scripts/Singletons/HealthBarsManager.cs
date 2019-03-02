@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class HealthBarsManager : MonoBehaviour {
 
 	public GameObject panelHealthBarPrefab;
-	public Transform panelHealthBarsTransform;
-	public static HealthBarsManager Instance {get; private set;}
+    public Vector3 healthBarScale = new Vector3(0.1f, 0.01f, 1f);
+
+    public static HealthBarsManager Instance {get; private set;}
 	
 
 	private void Awake() {
@@ -31,8 +32,8 @@ public class HealthBarsManager : MonoBehaviour {
 	}
 
 	private void OnPlayerJoining(PlayerId playerId, bool gameFull) {
-		playerId.panelHealthBar = Instantiate(panelHealthBarPrefab, panelHealthBarsTransform);
-		playerId.panelHealthBar.GetComponent<RectTransform>().localScale = Vector3.one;
+		playerId.panelHealthBar = Instantiate(panelHealthBarPrefab, CanvasManager.Instance.panelPlaying.transform);
+		playerId.panelHealthBar.GetComponent<RectTransform>().localScale = healthBarScale;
 		playerId.greenHealthBar = playerId.panelHealthBar.transform.Find("Panel Green").gameObject.GetComponent<Image>();
 		Canvas.ForceUpdateCanvases();
 	}

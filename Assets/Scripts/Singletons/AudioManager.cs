@@ -35,12 +35,13 @@ public class AudioManager : MonoBehaviour {
 	public AudioClip menuClickClip;
 	public AudioClip playerJoiningClip;
 	public AudioClip playerLeavingClip;
-	public AudioClip ticTacClip;
+    public AudioClip ticTacClip;
 	public AudioClip VictoryClip;
 	public AudioClip WarningClip;
 	public List<AudioClip> listOfMiscClips;
+    public List<AudioClip> listOfDeath;
 
-	public static AudioManager Instance { get; private set; }
+    public static AudioManager Instance { get; private set; }
 
 	private List<AudioSource> availableAudioSourceList;
 	private List<AudioSource> playingAudioSourceList;
