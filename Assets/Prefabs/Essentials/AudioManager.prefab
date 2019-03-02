@@ -64,3 +64,14 @@ MonoBehaviour:
   listOfMiscClips:
   - {fileID: 8300000, guid: de80b17080e8fc74b99e06f6fd6ff13a, type: 3}
   - {fileID: 8300000, guid: ba4ba8f5228bb634999b350dd5d4fcfc, type: 3}
+  listOfDeath:
+  - {fileID: 8300000, guid: 69d2833ca21193c4d8f8135e47a08ba7, type: 3}
+  - {fileID: 8300000, guid: dc18e114ea515eb42b711c40b578b484, type: 3}
+  - {fileID: 8300000, guid: 393b3454f5332b040b58b66601d966f7, type: 3}
+  - {fileID: 8300000, guid: 5b35dafb8f3f28040861832942eb07fc, type: 3}
+  - {fileID: 8300000, guid: 52e215d2e03ca4d4eb83294a8e659243, type: 3}
+  - {fileID: 8300000, guid: 41e8343b41cd84b4fa50d7d924de79dd, type: 3}
+  - {fileID: 8300000, guid: 928f5dd3afefee949a5ffeb17eef5127, type: 3}
+  - {fileID: 8300000, guid: f60e35d29010b4b46aa6760fff0a24cc, type: 3}
+  - {fileID: 8300000, guid: 05a2acc98a563db4dafa6f59fe75fe1e, type: 3}
+  - {fileID: 8300000, guid: 5e438ac95de934d4793a414c3296c922, type: 3}
