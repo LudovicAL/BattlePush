@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class PlayerJoiningEvent : UnityEvent<PlayerId, bool> {}
@@ -14,6 +15,7 @@ public class PlayerJoiningTeamEvent : UnityEvent<PlayerId> {}
 
 public class PlayerListManager : MonoBehaviour {
 	public int maxNumPlayers;
+    public Text text;
 	public List<PlayerId> listOfPlayers {get; private set;}
     public List<PlayerId> listOfPlayersNull { get; private set; }
     public List<PlayerId> listOfPlayersRed { get; private set; }
@@ -21,7 +23,7 @@ public class PlayerListManager : MonoBehaviour {
     public List<PlayerId> listOfAvailablePlayers;
     public PlayerJoiningEvent playerJoining = new PlayerJoiningEvent();
     public PlayerLeavingEvent playerLeaving = new PlayerLeavingEvent();
-    public PlayerJoiningTeamEvent PlayerJoiningTeam = new PlayerJoiningTeamEvent();
+    public PlayerJoiningTeamEvent playerJoiningTeam = new PlayerJoiningTeamEvent();
     public int currentPlayerCount;
 
 	public static PlayerListManager Instance {get; private set;}
@@ -45,20 +47,35 @@ public class PlayerListManager : MonoBehaviour {
     }
 
 	void Update () {
-        for (int i = listOfPlayers.Count - 1; i >= 0; i--) {
-            if (listOfPlayers[i].controls.GetButtonBDown()) {
-                RemovePlayer(listOfPlayers[i]);
+        if (GameStatesManager.Instance.gameState.Equals(GameStatesManager.AvailableGameStates.Menu))
+        {
+            for (int i = listOfPlayers.Count - 1; i >= 0; i--)
+            {
+                if (listOfPlayers[i].controls.GetLHorizontal() >= 0.5)
+                {
+                    SwitchPlayerList(listOfPlayers[i], listOfPlayersBlue, listOfPlayersRed);
+                }
+                if (listOfPlayers[i].controls.GetLHorizontal() <= -0.5)
+                {
+                    SwitchPlayerList(listOfPlayers[i], listOfPlayersRed, listOfPlayersBlue);
+                }
+                if (listOfPlayers[i].controls.GetButtonStartDown()){
+                    if (listOfPlayersNull.Count == 0 && (listOfPlayersRed.Count != 0 || listOfPlayersRed.Count != 0))
+                    {
+                        GameStatesManager.Instance.ChangeGameStateTo(GameStatesManager.AvailableGameStates.Starting);
+                    }
+                }
+                if (listOfPlayers[i].controls.GetButtonBDown())
+                {
+                    RemovePlayer(listOfPlayers[i]);
+                }
             }
-            if (listOfPlayers[i].controls.GetLHorizontal()>=0.5){
-                SwitchPlayerList(listOfPlayers[i], listOfPlayersBlue, listOfPlayersRed);
-            }
-            if (listOfPlayers[i].controls.GetLHorizontal()<=-0.5){
-                SwitchPlayerList(listOfPlayers[i], listOfPlayersRed, listOfPlayersBlue);
-            }
-        }
-        for (int i = listOfAvailablePlayers.Count - 1; i >= 0; i--) {
-            if (listOfAvailablePlayers[i].controls.GetButtonADown()) {
-                AddPlayer(listOfAvailablePlayers[i]);
+            for (int i = listOfAvailablePlayers.Count - 1; i >= 0; i--)
+            {
+                if (listOfAvailablePlayers[i].controls.GetButtonADown())
+                {
+                    AddPlayer(listOfAvailablePlayers[i]);
+                }
             }
         }
     }
@@ -90,11 +107,11 @@ public class PlayerListManager : MonoBehaviour {
         if (listDest.Equals(listOfPlayersRed)) {
             PlanelJoinManager.Instance.SwitchTeamUI(playerId, 'r');
             playerId.team = PlanelJoinManager.REDTEAM;
-            PlayerJoiningTeam.Invoke(playerId);
+            playerJoiningTeam.Invoke(playerId);
         } else if (listDest.Equals(listOfPlayersBlue)) {
             PlanelJoinManager.Instance.SwitchTeamUI(playerId, 'b');
             playerId.team = PlanelJoinManager.BLUETEAM;
-            PlayerJoiningTeam.Invoke(playerId);
+            playerJoiningTeam.Invoke(playerId);
         }
     }
 
