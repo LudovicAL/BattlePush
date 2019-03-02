@@ -9,6 +9,7 @@ public class PlayerId : ScriptableObject {
     public Controls controls;
 	public int currentHealth = 100;
 	public int maxHealth = 100;
+    public float lastTimeDamageTaken = 0;
 	public Color color = Color.white;
 	public Vector3 spawnPosition;
 
