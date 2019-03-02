@@ -1,27 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &100100000
-Prefab:
-  m_ObjectHideFlags: 1
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1677954491794066}
-  m_IsPrefabAsset: 1
 --- !u!1 &1677954491794066
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4388117240587234}
   - component: {fileID: 114901444590599284}
   m_Layer: 0
-  m_Name: PlayersManager
+  m_Name: PlayerListManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,9 +19,10 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &4388117240587234
 Transform:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1677954491794066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -42,9 +33,10 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114901444590599284
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1677954491794066}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -52,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxNumPlayers: 15
+  text: {fileID: 0}
   listOfAvailablePlayers:
   - {fileID: 11400000, guid: 18227f4100446a14d91b1b7bb7c4d20e, type: 2}
   - {fileID: 11400000, guid: 14cbff6b575a41041b9c0a00e2b0e8ba, type: 2}
@@ -68,13 +61,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 886f23e18020366498e536cf0c4ff4e1, type: 2}
   - {fileID: 11400000, guid: 4ef07a4d28e57d141ac3e4d00f03e262, type: 2}
   - {fileID: 11400000, guid: a869273f3999c4347b84407a5c281597, type: 2}
-  playerJoined:
+  playerJoining:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: PlayerJoinedEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    m_TypeName: PlayerJoiningEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  playerLeft:
+  playerLeaving:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: PlayerLeftEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    m_TypeName: PlayerLeavingEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  playerJoiningTeam:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: PlayerJoiningTeamEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  currentPlayerCount: 0

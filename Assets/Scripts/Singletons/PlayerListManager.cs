@@ -15,7 +15,7 @@ public class PlayerJoiningTeamEvent : UnityEvent<PlayerId> {}
 
 public class PlayerListManager : MonoBehaviour {
 	public int maxNumPlayers;
-    public Text text;
+    public Text errorText;
 	public List<PlayerId> listOfPlayers {get; private set;}
     public List<PlayerId> listOfPlayersNull { get; private set; }
     public List<PlayerId> listOfPlayersRed { get; private set; }
@@ -60,9 +60,12 @@ public class PlayerListManager : MonoBehaviour {
                     SwitchPlayerList(listOfPlayers[i], listOfPlayersRed, listOfPlayersBlue);
                 }
                 if (listOfPlayers[i].controls.GetButtonStartDown()){
-                    if (listOfPlayersNull.Count == 0 && (listOfPlayersRed.Count != 0 || listOfPlayersRed.Count != 0))
+                    if (listOfPlayersNull.Count == 0 && (listOfPlayersRed.Count != 0 && listOfPlayersBlue.Count != 0))
                     {
                         GameStatesManager.Instance.ChangeGameStateTo(GameStatesManager.AvailableGameStates.Starting);
+                    }
+                    else {
+                        errorText.text = "You must have one player min. in each team and no one in the middle";
                     }
                 }
                 if (listOfPlayers[i].controls.GetButtonBDown())
