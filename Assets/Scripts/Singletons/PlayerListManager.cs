@@ -9,6 +9,9 @@ public class PlayerJoiningEvent : UnityEvent<PlayerId, bool> {}
 [System.Serializable]
 public class PlayerLeavingEvent : UnityEvent<PlayerId> {}
 
+[System.Serializable]
+public class PlayerJoiningTeamEvent : UnityEvent<PlayerId> {}
+
 public class PlayerListManager : MonoBehaviour {
 	public int maxNumPlayers;
 	public List<PlayerId> listOfPlayers {get; private set;}
@@ -18,7 +21,8 @@ public class PlayerListManager : MonoBehaviour {
     public List<PlayerId> listOfAvailablePlayers;
     public PlayerJoiningEvent playerJoining = new PlayerJoiningEvent();
     public PlayerLeavingEvent playerLeaving = new PlayerLeavingEvent();
-	public int currentPlayerCount;
+    public PlayerJoiningTeamEvent PlayerJoiningTeam = new PlayerJoiningTeamEvent();
+    public int currentPlayerCount;
 
 	public static PlayerListManager Instance {get; private set;}
 
@@ -85,8 +89,12 @@ public class PlayerListManager : MonoBehaviour {
     private void updateUIDispach(PlayerId playerId, List<PlayerId> listDest) {
         if (listDest.Equals(listOfPlayersRed)) {
             PlanelJoinManager.Instance.SwitchTeamUI(playerId, 'r');
+            playerId.team = PlanelJoinManager.REDTEAM;
+            PlayerJoiningTeam.Invoke(playerId);
         } else if (listDest.Equals(listOfPlayersBlue)) {
             PlanelJoinManager.Instance.SwitchTeamUI(playerId, 'b');
+            playerId.team = PlanelJoinManager.BLUETEAM;
+            PlayerJoiningTeam.Invoke(playerId);
         }
     }
 

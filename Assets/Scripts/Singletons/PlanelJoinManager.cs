@@ -48,7 +48,6 @@ public class PlanelJoinManager : MonoBehaviour {
         playerId.panelJoin = Instantiate(panelJoinedPrefab, panelJoinTransform);
         playerId.panelJoin.GetComponent<RectTransform>().localScale = Vector3.one;
         playerId.panelJoin.transform.Find("Text").GetComponent<Text>().text = playerId.playerName + " joined the "+ teamName+" Team!";
-        playerId.team = teamName;
         Canvas.ForceUpdateCanvases();
     }
 
