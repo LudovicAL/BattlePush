@@ -115,6 +115,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   avatarPrefab: {fileID: 1752278459137264, guid: e7b1c91092009554db4d69ecf75fa22a,
     type: 3}
+  spawnPointPrefab: {fileID: 8627332738050768693, guid: a173708949423a14d82b1b31f0ee1e68,
+    type: 3}
   redSpawnPointList:
   - {fileID: 8627332737179077067}
   - {fileID: 8627332736567196726}

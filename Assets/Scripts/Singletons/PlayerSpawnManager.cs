@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerSpawnManager : MonoBehaviour {
 
 	public GameObject avatarPrefab;
+	public GameObject spawnPointPrefab;
 	public List<GameObject> redSpawnPointList;
 	public List<GameObject> blueSpawnPointList;
 	public static PlayerSpawnManager Instance {get; private set;}
@@ -41,6 +42,12 @@ public class PlayerSpawnManager : MonoBehaviour {
 
 	private void OnPlayerLeaving(PlayerId playerId) {
 		if (playerId.avatar != null) {
+			GameObject spawnPoint = Instantiate(spawnPointPrefab, playerId.player.transform.position, Quaternion.identity);
+			if (playerId.team == PlanelJoinManager.REDTEAM) {
+				redSpawnPointList.Add(spawnPoint);
+			} else {
+				blueSpawnPointList.Add(spawnPoint);
+			}
 			Destroy(playerId.avatar);
 		}
 	}
