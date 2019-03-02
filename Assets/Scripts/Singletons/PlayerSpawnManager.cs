@@ -22,7 +22,7 @@ public class PlayerSpawnManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		PlayerListManager.Instance.PlayerJoiningTeam.AddListener(OnPlayerJoiningTeam);
+		PlayerListManager.Instance.playerJoiningTeam.AddListener(OnPlayerJoiningTeam);
 		PlayerListManager.Instance.playerLeaving.AddListener(OnPlayerLeaving);
 	}
 
