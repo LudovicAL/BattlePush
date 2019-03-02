@@ -45,20 +45,21 @@ public class PlanelJoinManager : MonoBehaviour {
 	}
 
     private void joinTeam(PlayerId playerId, string teamName, GameObject panelJoinedPrefab, Transform panelJoinTransform) {
-        playerId.panelJoin = Instantiate(panelJoinedPrefab, panelJoinTransform);
+        /*playerId.panelJoin = Instantiate(panelJoinedPrefab, panelJoinTransform);
         playerId.panelJoin.GetComponent<RectTransform>().localScale = Vector3.one;
-        playerId.panelJoin.transform.Find("Text").GetComponent<Text>().text = playerId.playerName + " joined the "+ teamName+" Team!";
+        playerId.panelJoin.transform.Find("Text").GetComponent<Text>().text = playerId.playerName + " joined the "+ teamName+" Team!";*/
+        playerId.panelJoin.transform.parent = panelJoinTransform;
         Canvas.ForceUpdateCanvases();
     }
 
     public void SwitchTeamUI(PlayerId playerId, char team){
         switch (team) {
             case 'r':
-                Destroy(playerId.panelJoin);
+                //Destroy(playerId.panelJoin);
                 joinTeam(playerId, REDTEAM, panelPlayerJoinedRedPrefab, panelPlayerJoinRedTransform);
                 break;
             case 'b':
-                Destroy(playerId.panelJoin);
+                //Destroy(playerId.panelJoin);
                 joinTeam(playerId, BLUETEAM, panelPlayerJoinedBluePrefab, panelPlayerJoinBlueTransform);
                 break;
             default:
