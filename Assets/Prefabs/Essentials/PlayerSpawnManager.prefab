@@ -113,6 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579e4ce577e35914fa7c650f0b464366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blueTeamTransform: {fileID: 2056312658}
+  redTeamTransform: {fileID: 1192245849}
   avatarPrefab: {fileID: 1752278459137264, guid: e7b1c91092009554db4d69ecf75fa22a,
     type: 3}
   spawnPointPrefab: {fileID: 8627332738050768693, guid: a173708949423a14d82b1b31f0ee1e68,
