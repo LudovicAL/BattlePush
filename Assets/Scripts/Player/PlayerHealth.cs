@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(Player))]
 public class PlayerHealth : MonoBehaviour {
-    public int DAMAGE_BY_SECOND = 1;
+    public int DAMAGE_BY_SECOND = 10;
 
 	[HideInInspector] public Player player;
 	public PlayerTakingDamage playerTakingDamage = new PlayerTakingDamage();
@@ -17,15 +17,17 @@ public class PlayerHealth : MonoBehaviour {
 	[System.Serializable]
 	public class PlayerDying : UnityEvent<PlayerId> {}
 
-	// Use this for initialization
-	void Start () {
+    public float lastTimeDamageTaken = 0;
+
+    // Use this for initialization
+    void Start () {
 		player = GetComponent<Player>();
         player.playerId.currentHealth = player.playerId.maxHealth;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        float timeSinceLastDamage = Time.realtimeSinceStartup - player.playerId.lastTimeDamageTaken;
+        float timeSinceLastDamage = Time.realtimeSinceStartup - lastTimeDamageTaken;
         if (timeSinceLastDamage > 1 && true) //Remplacer true par isInTheZone
         {
             TakeDamage(DAMAGE_BY_SECOND);
@@ -36,7 +38,7 @@ public class PlayerHealth : MonoBehaviour {
 	public void TakeDamage(int amount) {
 		if (player.playerId.currentHealth > 0) {
 			player.playerId.currentHealth -= amount;
-            player.playerId.lastTimeDamageTaken = Time.realtimeSinceStartup;
+            lastTimeDamageTaken = Time.realtimeSinceStartup;
             playerTakingDamage.Invoke(player.playerId, (float)player.playerId.currentHealth / (float)player.playerId.maxHealth);
             ToDieOrNotToDie();
         }

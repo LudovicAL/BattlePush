@@ -15,7 +15,7 @@ public class PlayerHealthBar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        player.playerId.panelHealthBar.transform.position = Camera.main.WorldToScreenPoint(player.transform.position);
 	}
 
 	public void OnTakingDamage(PlayerId playerId, float healthRatio) {
