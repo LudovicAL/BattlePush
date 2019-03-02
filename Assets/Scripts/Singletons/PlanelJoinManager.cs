@@ -10,7 +10,15 @@ public class PlanelJoinManager : MonoBehaviour {
 	public GameObject panelJoinInstruction;
 	public Transform panelPlayerJoinTransform;
 
-	private void Awake() {
+    public GameObject panelPlayerJoinedRedPrefab;
+    public GameObject panelJoinRedInstruction;
+    public Transform panelPlayerJoinRedTransform;
+
+    public GameObject panelPlayerJoinedBluePrefab;
+    public GameObject panelJoinBlueInstruction;
+    public Transform panelPlayerJoinBlueTransform;
+
+    private void Awake() {
         if (Instance == null) {
             Instance = this;
         } else if (Instance != this) {
@@ -34,11 +42,37 @@ public class PlanelJoinManager : MonoBehaviour {
 		Canvas.ForceUpdateCanvases();
 	}
 
+    private void joinTeam(PlayerId playerId, string teamName, GameObject panelJoinedPrefab, Transform panelJoinTransform) {
+        playerId.panelJoin = Instantiate(panelJoinedPrefab, panelJoinTransform);
+        playerId.panelJoin.GetComponent<RectTransform>().localScale = Vector3.one;
+        playerId.panelJoin.transform.Find("Text").GetComponent<Text>().text = playerId.playerName + " joined the "+ teamName+" Team!";
+        Canvas.ForceUpdateCanvases();
+    }
+
+    public void SwitchTeamUI(PlayerId playerId, char team){
+        switch (team) {
+            case 'r':
+                Destroy(playerId.panelJoin);
+                joinTeam(playerId, "Red", panelPlayerJoinedRedPrefab, panelPlayerJoinRedTransform);
+                break;
+            case 'b':
+                Destroy(playerId.panelJoin);
+                joinTeam(playerId, "Blue", panelPlayerJoinedBluePrefab, panelPlayerJoinBlueTransform);
+                break;
+            default:
+                Debug.Log("This is not normal");
+                break;
+        };
+    }
+
     private void OnPlayerLeaving(PlayerId playerId) {
         if (playerId.panelJoin != null) {
             Destroy(playerId.panelJoin);
+
         }
         panelJoinInstruction.SetActive(true);
-		Canvas.ForceUpdateCanvases();
+        panelJoinRedInstruction.SetActive(true);
+        panelJoinBlueInstruction.SetActive(true);
+        Canvas.ForceUpdateCanvases();
 	}
 }
