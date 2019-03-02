@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerHealthBar : MonoBehaviour {
 
 	[HideInInspector] public Player player;
+    public float positionHealthBar = 100;
 
 	// Use this for initialization
 	void Start () {
@@ -15,8 +16,11 @@ public class PlayerHealthBar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        player.playerId.panelHealthBar.transform.position = Camera.main.WorldToScreenPoint(player.transform.position);
-	}
+        Vector3 positionScreen = Camera.main.WorldToScreenPoint(player.transform.position);
+        positionScreen.y += positionHealthBar;
+        player.playerId.panelHealthBar.transform.position = positionScreen;
+
+    }
 
 	public void OnTakingDamage(PlayerId playerId, float healthRatio) {
 		playerId.greenHealthBar.fillAmount = Mathf.Clamp(healthRatio, 0.0f, 1.0f);
