@@ -7,10 +7,6 @@ using UnityEngine.Events;
 public class PlayerActions : MonoBehaviour {
 
 	[HideInInspector] public Player player;
-	public PlayerAttacking playerAttacking = new PlayerAttacking();
-
-	[System.Serializable]
-	public class PlayerAttacking : UnityEvent<PlayerId> {}
 
 	// Use this for initialization
 	void Start () {
@@ -19,12 +15,21 @@ public class PlayerActions : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (player.playerId.controls.GetButtonXDown()) {
-			Attack();
+		if (player.playerId.controls.GetRBumper()) {
+			player.playerAttack.SetPusherActivation(true);
+			player.playerAttack.SetPullerActivation(false);
+		} else {
+			player.playerAttack.SetPusherActivation(false);
+		}
+		if (player.playerId.controls.GetLBumper()) {
+			player.playerAttack.SetPullerActivation(true);
+			player.playerAttack.SetPusherActivation(false);	
+		} else {
+			player.playerAttack.SetPullerActivation(false);
 		}
 	}
 
 	public void Attack() {
-		playerAttacking.Invoke(player.playerId);
+		// Invoke PlayerAttack
 	}
 }
