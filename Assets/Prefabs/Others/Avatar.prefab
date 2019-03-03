@@ -60,6 +60,7 @@ MonoBehaviour:
   playerMovements: {fileID: 0}
   playerAttack: {fileID: 0}
   rigidBody2D: {fileID: 0}
+  playerCollider2D: {fileID: 0}
   pusher: {fileID: 0}
   puller: {fileID: 0}
 --- !u!114 &114640076510983834
@@ -87,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edb9e9cdb43c354eb2549f88d5ac609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DAMAGE_BY_SECOND: 1
+  DAMAGE_BY_SECOND: 10
   player: {fileID: 114589985034945924}
   playerTakingDamage:
     m_PersistentCalls:
