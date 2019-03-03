@@ -30,7 +30,7 @@ public class PlayerHealth : MonoBehaviour {
         if (GameStatesManager.Instance.gameState.Equals(GameStatesManager.AvailableGameStates.Playing))
         {
             float timeSinceLastDamage = Time.realtimeSinceStartup - lastTimeDamageTaken;
-            if (timeSinceLastDamage > 1 && ZoneManager.Instance.IsInTheZone(player.playerCollider2D))
+            if (timeSinceLastDamage > 1 && !ZoneManager.Instance.IsInTheZone(player.playerCollider2D))
             {
                 TakeDamage(DAMAGE_BY_SECOND);
             }
