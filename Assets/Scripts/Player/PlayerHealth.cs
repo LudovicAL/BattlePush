@@ -27,10 +27,13 @@ public class PlayerHealth : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        float timeSinceLastDamage = Time.realtimeSinceStartup - lastTimeDamageTaken;
-        if (timeSinceLastDamage > 1 && true) //Remplacer true par isInTheZone
+        if (GameStatesManager.Instance.gameState.Equals(GameStatesManager.AvailableGameStates.Playing))
         {
-            TakeDamage(DAMAGE_BY_SECOND);
+            float timeSinceLastDamage = Time.realtimeSinceStartup - lastTimeDamageTaken;
+            if (timeSinceLastDamage > 1 && ZoneManager.Instance.IsInTheZone(player.playerCollider2D))
+            {
+                TakeDamage(DAMAGE_BY_SECOND);
+            }
         }
 	}
 
