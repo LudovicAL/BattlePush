@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 114589985034945924}
-  positionHealthBar: 100
+  positionHealthBar: 30
 --- !u!50 &1589882150
 Rigidbody2D:
   serializedVersion: 4

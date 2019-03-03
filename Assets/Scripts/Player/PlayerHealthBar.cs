@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerHealthBar : MonoBehaviour {
 
 	[HideInInspector] public Player player;
-    public float positionHealthBar = 100;
+    public float positionHealthBar = 30;
 
 	// Use this for initialization
 	void Start () {
