@@ -13,7 +13,7 @@ public class PlayerSpawnManager : MonoBehaviour {
 	public List<GameObject> blueSpawnPointList;
 	public static PlayerSpawnManager Instance {get; private set;}
 
-	private void Awake() {
+    private void Awake() {
 		if (Instance == null) {
 			Instance = this;
 		} else if (Instance != this) {
@@ -37,12 +37,12 @@ public class PlayerSpawnManager : MonoBehaviour {
 
 	private void OnPlayerJoiningTeam(PlayerId playerId) {
 		if (playerId.team == PlanelJoinManager.REDTEAM && redSpawnPointList.Count() > 0) {
-			int index = Random.Range(0, redSpawnPointList.Count());
+            int index = Random.Range(0, redSpawnPointList.Count());
 			playerId.spawnPosition = redSpawnPointList[index].transform.position;
 			Destroy(redSpawnPointList[index]);
 			blueSpawnPointList.RemoveAt(index);
 		} else if (playerId.team == PlanelJoinManager.BLUETEAM && blueSpawnPointList.Count() > 0) {
-			int index = Random.Range(0, blueSpawnPointList.Count());
+            int index = Random.Range(0, blueSpawnPointList.Count());
 			playerId.spawnPosition = blueSpawnPointList[index].transform.position;
 			Destroy(blueSpawnPointList[index]);
 			blueSpawnPointList.RemoveAt(index);

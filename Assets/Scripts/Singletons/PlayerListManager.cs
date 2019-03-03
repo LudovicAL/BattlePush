@@ -29,8 +29,10 @@ public class PlayerListManager : MonoBehaviour {
     public PlayerJoiningTeamEvent playerJoiningTeam = new PlayerJoiningTeamEvent();
     public PlayerLeavingTeamEvent playerLeavingTeam = new PlayerLeavingTeamEvent();
     public int currentPlayerCount;
+    public Sprite redCharacter;
+    public Sprite blueCharacter;
 
-	public static PlayerListManager Instance {get; private set;}
+    public static PlayerListManager Instance {get; private set;}
 
     private void Awake() {
         if (Instance == null) {
@@ -117,6 +119,7 @@ public class PlayerListManager : MonoBehaviour {
             }
             PlanelJoinManager.Instance.SwitchTeamUI(playerId, 'r');
             playerId.team = PlanelJoinManager.REDTEAM;
+            playerId.avatar.GetComponent<SpriteRenderer>().sprite = redCharacter;
             playerJoiningTeam.Invoke(playerId);
         } else if (listDest.Equals(listOfPlayersBlue)) {
             if (playerId.team != null && playerId.team == PlanelJoinManager.REDTEAM) {
@@ -124,6 +127,7 @@ public class PlayerListManager : MonoBehaviour {
             }
             PlanelJoinManager.Instance.SwitchTeamUI(playerId, 'b');
             playerId.team = PlanelJoinManager.BLUETEAM;
+            playerId.avatar.GetComponent<SpriteRenderer>().sprite = blueCharacter;
             playerJoiningTeam.Invoke(playerId);
         }
     }
