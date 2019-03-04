@@ -54,6 +54,8 @@ public class PlayerHealth : MonoBehaviour {
             player.playerId.currentHealth = 0;
             AudioManager.Instance.PlayClip(AudioManager.Instance.GetRandomClipFromList(AudioManager.Instance.listOfDeath));
             playerDying.Invoke(player.playerId);
+            Destroy(player.playerId.panelHealthBar);
+            Destroy(player.playerId.avatar);
         }
     }
 }
