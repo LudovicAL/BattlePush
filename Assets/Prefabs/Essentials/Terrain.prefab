@@ -804,6 +804,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1577abb56f3220c45b6c1679d25b3dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToMinScale: 10000
+  timeToMinScale: 100
   xMinScale: 2
   yMinScale: 1

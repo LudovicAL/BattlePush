@@ -12,11 +12,9 @@ public class PlanelJoinManager : MonoBehaviour {
 	public GameObject panelJoinInstruction;
 	public Transform panelPlayerJoinTransform;
 
-    public GameObject panelPlayerJoinedRedPrefab;
     public GameObject panelJoinRedInstruction;
     public Transform panelPlayerJoinRedTransform;
 
-    public GameObject panelPlayerJoinedBluePrefab;
     public GameObject panelJoinBlueInstruction;
     public Transform panelPlayerJoinBlueTransform;
 
@@ -56,11 +54,11 @@ public class PlanelJoinManager : MonoBehaviour {
         switch (team) {
             case 'r':
                 //Destroy(playerId.panelJoin);
-                joinTeam(playerId, REDTEAM, panelPlayerJoinedRedPrefab, panelPlayerJoinRedTransform);
+                joinTeam(playerId, REDTEAM, panelPlayerJoinedPrefab, panelPlayerJoinRedTransform);
                 break;
             case 'b':
                 //Destroy(playerId.panelJoin);
-                joinTeam(playerId, BLUETEAM, panelPlayerJoinedBluePrefab, panelPlayerJoinBlueTransform);
+                joinTeam(playerId, BLUETEAM, panelPlayerJoinedPrefab, panelPlayerJoinBlueTransform);
                 break;
             default:
                 Debug.Log("This is not normal");
