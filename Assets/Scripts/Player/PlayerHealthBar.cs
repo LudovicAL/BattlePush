@@ -16,10 +16,13 @@ public class PlayerHealthBar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 positionScreen = Camera.main.WorldToScreenPoint(player.transform.position);
-        positionScreen.y += positionHealthBar;
-        player.playerId.panelHealthBar.transform.position = positionScreen;
-
+		if (GameStatesManager.Instance.gameState != GameStatesManager.AvailableGameStates.Menu) {
+			if (player.playerId.panelHealthBar) {
+				Vector3 positionScreen = Camera.main.WorldToScreenPoint(player.transform.position);
+				positionScreen.y += positionHealthBar;
+				player.playerId.panelHealthBar.transform.position = positionScreen;
+			}
+		}
     }
 
 	public void OnTakingDamage(PlayerId playerId, float healthRatio) {

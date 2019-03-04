@@ -53,36 +53,31 @@ public class PlayerListManager : MonoBehaviour {
     }
 
 	void Update () {
-        if (GameStatesManager.Instance.gameState.Equals(GameStatesManager.AvailableGameStates.Menu))
-        {
-            for (int i = listOfPlayers.Count - 1; i >= 0; i--)
-            {
-                if (listOfPlayers[i].controls.GetLHorizontal() >= 0.5)
-                {
+        if (GameStatesManager.Instance.gameState.Equals(GameStatesManager.AvailableGameStates.Menu)) {
+            for (int i = listOfPlayers.Count - 1; i >= 0; i--) {
+				if (listOfPlayers[i].controls.GetButtonStartDown()) {
+					if (listOfPlayersNull.Count == 0 && (listOfPlayersRed.Count != 0 && listOfPlayersBlue.Count != 0)) {
+						GameStatesManager.Instance.ChangeGameStateTo(GameStatesManager.AvailableGameStates.Starting);
+						break;
+					} else {
+						errorText.text = "You must have one player min. in each team and no one in the middle";
+					}
+				}
+				if (listOfPlayers[i].controls.GetLHorizontal() >= 0.5) {
                     SwitchPlayerList(listOfPlayers[i], listOfPlayersBlue, listOfPlayersRed);
-                }
-                if (listOfPlayers[i].controls.GetLHorizontal() <= -0.5)
-                {
+					break;
+				}
+                if (listOfPlayers[i].controls.GetLHorizontal() <= -0.5) {
                     SwitchPlayerList(listOfPlayers[i], listOfPlayersRed, listOfPlayersBlue);
-                }
-                if (listOfPlayers[i].controls.GetButtonStartDown()){
-                    if (listOfPlayersNull.Count == 0 && (listOfPlayersRed.Count != 0 && listOfPlayersBlue.Count != 0))
-                    {
-                        GameStatesManager.Instance.ChangeGameStateTo(GameStatesManager.AvailableGameStates.Starting);
-                    }
-                    else {
-                        errorText.text = "You must have one player min. in each team and no one in the middle";
-                    }
-                }
-                if (listOfPlayers[i].controls.GetButtonBDown())
-                {
+					break;
+				}
+                if (listOfPlayers[i].controls.GetButtonBDown()) {
                     RemovePlayer(listOfPlayers[i]);
+					break;
                 }
             }
-            for (int i = listOfAvailablePlayers.Count - 1; i >= 0; i--)
-            {
-                if (listOfAvailablePlayers[i].controls.GetButtonADown())
-                {
+            for (int i = listOfAvailablePlayers.Count - 1; i >= 0; i--) {
+                if (listOfAvailablePlayers[i].controls.GetButtonADown()) {
                     AddPlayer(listOfAvailablePlayers[i]);
                 }
             }
@@ -98,15 +93,13 @@ public class PlayerListManager : MonoBehaviour {
 			currentPlayerCount = listOfPlayers.Count;
 			bool gameFull = (currentPlayerCount < maxNumPlayers) ? false : true;
 			playerJoining.Invoke(playerId, gameFull);
-            playerId.avatar.GetComponent<Player>().playerHealth.playerDying.AddListener(OnDying);
+            playerId.avatar.GetComponent<Player>().playerHealth.playerDying.AddListener(OnPlayerDying);
         }
 	}
 
-    private void OnDying(PlayerId playerId)
-    {
+    private void OnPlayerDying(PlayerId playerId) {
         RemovePlayer(playerId);
-        if (listOfPlayersRed.Count == 0 || listOfPlayersBlue.Count == 0)
-        {
+        if (listOfPlayersRed.Count == 0 || listOfPlayersBlue.Count == 0) {
             GameStatesManager.Instance.ChangeGameStateTo(GameStatesManager.AvailableGameStates.Ending);
         }
     }

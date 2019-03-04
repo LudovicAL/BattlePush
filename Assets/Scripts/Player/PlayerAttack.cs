@@ -17,10 +17,10 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     public void SetPusherActivation(bool activate) {
-    	player.pusher.SetActive(activate);
+    	player.beam.SetActive(activate);
     }
 
     public void SetPullerActivation(bool activate) {
-    	player.puller.SetActive(activate);
+    	player.beam.SetActive(activate);
     }
 }

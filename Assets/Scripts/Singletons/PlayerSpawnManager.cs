@@ -9,8 +9,10 @@ public class PlayerSpawnManager : MonoBehaviour {
 	public Transform redTeamTransform;
 	public GameObject avatarPrefab;
 	public GameObject spawnPointPrefab;
-	public List<GameObject> redSpawnPointList;
-	public List<GameObject> blueSpawnPointList;
+	public List<Transform> availableRedSpawnPoints;
+	public List<Transform> availableBlueSpawnPoints;
+	private List<Transform> usedRedSpawnPoints = new List<Transform>();
+	private List<Transform> usedBlueSpawnPoints = new List<Transform>();
 	public static PlayerSpawnManager Instance {get; private set;}
 
     private void Awake() {
@@ -31,48 +33,51 @@ public class PlayerSpawnManager : MonoBehaviour {
 	}
 
 	private void OnPlayerJoining(PlayerId playerId, bool isGameFull) {
-		playerId.avatar = Instantiate(avatarPrefab, playerId.spawnPosition, Quaternion.identity);
-		playerId.avatar.GetComponent<Player>().playerId = playerId;
+		playerId.avatar = Instantiate(avatarPrefab);
+		playerId.player = playerId.avatar.GetComponent<Player>();
     }
 
 	private void OnPlayerJoiningTeam(PlayerId playerId) {
-		if (playerId.team == PlanelJoinManager.REDTEAM && redSpawnPointList.Count() > 0) {
-            int index = Random.Range(0, redSpawnPointList.Count());
-			playerId.spawnPosition = redSpawnPointList[index].transform.position;
-			Destroy(redSpawnPointList[index]);
-			blueSpawnPointList.RemoveAt(index);
-		} else if (playerId.team == PlanelJoinManager.BLUETEAM && blueSpawnPointList.Count() > 0) {
-            int index = Random.Range(0, blueSpawnPointList.Count());
-			playerId.spawnPosition = blueSpawnPointList[index].transform.position;
-			Destroy(blueSpawnPointList[index]);
-			blueSpawnPointList.RemoveAt(index);
+		if (playerId.team == PlanelJoinManager.REDTEAM && availableRedSpawnPoints.Count() > 0) {
+            int index = Random.Range(0, availableRedSpawnPoints.Count());
+			playerId.spawnTransform = availableRedSpawnPoints[index];
+			usedRedSpawnPoints.Add(availableRedSpawnPoints[index]);
+			availableRedSpawnPoints.RemoveAt(index);
+		} else if (playerId.team == PlanelJoinManager.BLUETEAM && availableBlueSpawnPoints.Count() > 0) {
+            int index = Random.Range(0, availableBlueSpawnPoints.Count());
+			playerId.spawnTransform = availableBlueSpawnPoints[index];
+			usedBlueSpawnPoints.Add(availableBlueSpawnPoints[index]);
+			availableBlueSpawnPoints.RemoveAt(index);
 		}
+		playerId.player.transform.position = playerId.spawnTransform.position;
 	}
 
 	public void OnPlayerLeavingTeam(PlayerId playerId) {
-		if (playerId.team == PlanelJoinManager.REDTEAM) {
-			GameObject spawnPoint = Instantiate(spawnPointPrefab, redTeamTransform);
-			spawnPoint.transform.position = playerId.spawnPosition;
-			redSpawnPointList.Add(spawnPoint);
-		} else {
-			GameObject spawnPoint = Instantiate(spawnPointPrefab, blueTeamTransform);
-			spawnPoint.transform.position = playerId.spawnPosition;
-			blueSpawnPointList.Add(spawnPoint);
-		}
+		MakeSpawnTransformAvailable(playerId);
 	}
 
 	private void OnPlayerLeaving(PlayerId playerId) {
 		if (playerId.avatar != null) {
-			if (playerId.team == PlanelJoinManager.REDTEAM) {
-				GameObject spawnPoint = Instantiate(spawnPointPrefab, redTeamTransform);
-				spawnPoint.transform.position = playerId.spawnPosition;
-				redSpawnPointList.Add(spawnPoint);
-			} else if (playerId.team == PlanelJoinManager.BLUETEAM) {
-				GameObject spawnPoint = Instantiate(spawnPointPrefab, blueTeamTransform);
-				spawnPoint.transform.position = playerId.spawnPosition;
-				blueSpawnPointList.Add(spawnPoint);
-			}
 			Destroy(playerId.avatar);
+		}
+		MakeSpawnTransformAvailable(playerId);
+	}
+
+	private void MakeSpawnTransformAvailable(PlayerId playerId) {
+		if (playerId.team == PlanelJoinManager.REDTEAM) {
+			if (usedRedSpawnPoints.Contains(playerId.spawnTransform)) {
+				usedRedSpawnPoints.Remove(playerId.spawnTransform);
+			}
+			if (!availableRedSpawnPoints.Contains(playerId.spawnTransform)) {
+				availableRedSpawnPoints.Add(playerId.spawnTransform);
+			}
+		} else if (playerId.team == PlanelJoinManager.BLUETEAM) {
+			if (usedBlueSpawnPoints.Contains(playerId.spawnTransform)) {
+				usedBlueSpawnPoints.Remove(playerId.spawnTransform);
+			}
+			if (!availableBlueSpawnPoints.Contains(playerId.spawnTransform)) {
+				availableBlueSpawnPoints.Add(playerId.spawnTransform);
+			}
 		}
 	}
 }
