@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HealthBarsManager : MonoBehaviour {
 
 	public GameObject panelHealthBarPrefab;
-    public Vector3 healthBarScale = new Vector3(0.1f, 0.01f, 1f);
+    public Vector3 healthBarScale = new Vector3(0.05f, 0.01f, 1f);
 
     public static HealthBarsManager Instance {get; private set;}
 	
