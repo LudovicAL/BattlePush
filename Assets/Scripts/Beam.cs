@@ -2,12 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent (typeof(MeshFilter))]
+[RequireComponent(typeof(MeshRenderer))]
 public class Beam : MonoBehaviour {
 
+	public enum AttackType {
+		Push,
+		Pull
+	}
+
+	public Material pushMaterial;
+	public Material pullMaterial;
+	public float beamStrength;
 	public float beamRadius;
 	public float beamAngle;
 	public float meshResolution;
-	public MeshFilter beamMeshFilter;
+	private MeshFilter beamMeshFilter;
+	private MeshRenderer beamMeshRenderer;
 	public int edgeResolveIterations;
 	public float edgeDistanceThreshold;
 	private Mesh beamMesh;
@@ -15,19 +26,43 @@ public class Beam : MonoBehaviour {
 	public LayerMask targetMask;
 	public LayerMask obstacleMask;
 	[HideInInspector] public List<Transform> visibleTargets= new List<Transform>();
+	[HideInInspector] public AttackType attackType = AttackType.Push;
 
-    // Start is called before the first frame update
-    void Start() {
+	// Start is called before the first frame update
+	void Start() {
+		beamMeshFilter = GetComponent<MeshFilter>();
+		beamMeshRenderer = GetComponent<MeshRenderer>();
 		beamMesh = new Mesh();
-		beamMesh.name = "Beam mesh";
 		beamMeshFilter.mesh = beamMesh;
 	}
 
-    // Update is called once per frame
-    void LateUpdate() {
+	private void OnEnable() {
+		if (beamMeshRenderer) {
+			if (attackType == AttackType.Push) {
+				beamMeshRenderer.material = pushMaterial;
+			} else if (attackType == AttackType.Pull) {
+				beamMeshRenderer.material = pullMaterial;
+			}
+		}
+	}
+
+	private void Update() {
+		
+	}
+
+	// Update is called once per frame
+	void LateUpdate() {
 		FindTargets();
 		DrawBeam();
+		PushPull();
     }
+
+	private void PushPull() {
+		foreach (Transform target in visibleTargets) {
+			Vector3 directionToTarget = (target.position - transform.position).normalized;
+			target.GetComponent<Rigidbody2D>().AddForce(directionToTarget * beamStrength * Time.deltaTime, ForceMode2D.Force);
+		}
+	}
 
 	public Vector3 DirectionFromAngle(float angleInDegrees, bool angleIsGlobal) {
 		if (!angleIsGlobal) {

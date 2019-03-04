@@ -35,6 +35,7 @@ public class PlayerSpawnManager : MonoBehaviour {
 	private void OnPlayerJoining(PlayerId playerId, bool isGameFull) {
 		playerId.avatar = Instantiate(avatarPrefab);
 		playerId.player = playerId.avatar.GetComponent<Player>();
+		playerId.player.playerId = playerId;
     }
 
 	private void OnPlayerJoiningTeam(PlayerId playerId) {

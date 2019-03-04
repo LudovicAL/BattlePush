@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 811760153489930144}
   - component: {fileID: 1994226615128394166}
   - component: {fileID: 8075184176171880684}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pillier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 642dfb811ae78b44e91338c71d0e85fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 5345435107117782839}
   - component: {fileID: 5345435107117782838}
   - component: {fileID: 5345435107117782836}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pillier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 642dfb811ae78b44e91338c71d0e85fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 5345435107590494244}
   - component: {fileID: 5345435107590494247}
   - component: {fileID: 5345435107590494245}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pillier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 642dfb811ae78b44e91338c71d0e85fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 5345435108247950332}
   - component: {fileID: 5345435108247950335}
   - component: {fileID: 5345435108247950333}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pillier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,7 +386,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 642dfb811ae78b44e91338c71d0e85fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -491,7 +491,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 30d13fc1f7b7f4c4ab6e2dff93be81e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: 5345435108670986574}
   - component: {fileID: 5345435108670986569}
   - component: {fileID: 5345435108670986575}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pillier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -608,7 +608,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 642dfb811ae78b44e91338c71d0e85fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -715,7 +715,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3d23ac2a3e745024b9eb3ecf02095173, type: 3}
   m_Color: {r: 0.033018887, g: 1, b: 0.5629899, a: 1}
   m_FlipX: 0
@@ -804,6 +804,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1577abb56f3220c45b6c1679d25b3dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToMinScale: 100
+  timeToMinScale: 10000
   xMinScale: 1
   yMinScale: 1

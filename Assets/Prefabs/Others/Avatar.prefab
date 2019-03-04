@@ -60,8 +60,7 @@ MonoBehaviour:
   playerAttack: {fileID: 0}
   rigidBody2D: {fileID: 0}
   playerCollider2D: {fileID: 0}
-  pusher: {fileID: 0}
-  puller: {fileID: 0}
+  beam: {fileID: 0}
 --- !u!114 &114640076510983834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edb9e9cdb43c354eb2549f88d5ac609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DAMAGE_BY_SECOND: 10
+  damageBySecond: 10
   player: {fileID: 114589985034945924}
   playerTakingDamage:
     m_PersistentCalls:
@@ -223,8 +222,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   maxSpeed: 10
-  aimingTreshold: 0.75
-  movingTreshold: 0.1
+  aimingThreshold: 0.75
+  movingThreshold: 0.15
 --- !u!114 &1589882152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,10 +282,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 451d998e4ee2529438f265f59cfc294a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pushMaterial: {fileID: 2100000, guid: d7bb9fdf74d6cb24f85ee6aacc95cf22, type: 2}
+  pullMaterial: {fileID: 2100000, guid: 2e2c0bed6fa9b8446b58825a1b1fa386, type: 2}
+  beamStrength: 3
   beamRadius: 9
   beamAngle: 25
   meshResolution: 0.2
-  beamMeshFilter: {fileID: 8684386799131218777}
   edgeResolveIterations: 6
   edgeDistanceThreshold: 4
   targetMask:
@@ -296,6 +297,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   visibleTargets: []
+  attackType: 0
 --- !u!33 &8684386799131218777
 MeshFilter:
   m_ObjectHideFlags: 0

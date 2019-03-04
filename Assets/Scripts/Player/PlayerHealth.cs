@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(Player))]
 public class PlayerHealth : MonoBehaviour {
-    public int DAMAGE_BY_SECOND = 10;
+    public int damageBySecond = 10;
 
 	[HideInInspector] public Player player;
 	public PlayerTakingDamage playerTakingDamage = new PlayerTakingDamage();
@@ -27,12 +27,10 @@ public class PlayerHealth : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (GameStatesManager.Instance.gameState.Equals(GameStatesManager.AvailableGameStates.Playing))
-        {
+        if (GameStatesManager.Instance.gameState.Equals(GameStatesManager.AvailableGameStates.Playing)) {
             float timeSinceLastDamage = Time.realtimeSinceStartup - lastTimeDamageTaken;
-            if (timeSinceLastDamage > 1 && !ZoneManager.Instance.IsInTheZone(player.playerCollider2D))
-            {
-                TakeDamage(DAMAGE_BY_SECOND);
+            if (timeSinceLastDamage > 1 && !ZoneManager.Instance.IsInTheZone(player.playerCollider2D)) {
+                TakeDamage(damageBySecond);
             }
         }
 	}
@@ -40,22 +38,19 @@ public class PlayerHealth : MonoBehaviour {
 	//Call this function when dealing damage to this player
 	public void TakeDamage(int amount) {
 		if (player.playerId.currentHealth > 0) {
-			player.playerId.currentHealth -= amount;
+			player.playerId.currentHealth = Mathf.Clamp(player.playerId.currentHealth - amount, 0, int.MaxValue);
             lastTimeDamageTaken = Time.realtimeSinceStartup;
-            playerTakingDamage.Invoke(player.playerId, (float)player.playerId.currentHealth / (float)player.playerId.maxHealth);
-            ToDieOrNotToDie();
+            playerTakingDamage.Invoke(player.playerId, (float)player.playerId.currentHealth / player.playerId.maxHealth);
+			if (player.playerId.currentHealth == 0) {
+				PlayerDie();
+			}
         }
 	}
 
-    public void ToDieOrNotToDie()
-    {
-        if (player.playerId.currentHealth <= 0)
-        {
-            player.playerId.currentHealth = 0;
-            AudioManager.Instance.PlayClip(AudioManager.Instance.GetRandomClipFromList(AudioManager.Instance.listOfDeath));
-            playerDying.Invoke(player.playerId);
-            Destroy(player.playerId.panelHealthBar);
-            Destroy(player.playerId.avatar);
-        }
+    public void PlayerDie() {
+        AudioManager.Instance.PlayClip(AudioManager.Instance.GetRandomClipFromList(AudioManager.Instance.listOfDeath));
+        playerDying.Invoke(player.playerId);
+        Destroy(player.playerId.panelHealthBar);
+        Destroy(player.playerId.avatar);
     }
 }

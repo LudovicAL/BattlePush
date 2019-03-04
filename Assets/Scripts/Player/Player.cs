@@ -18,7 +18,7 @@ public class Player : MonoBehaviour {
 	[HideInInspector] public PlayerAttack playerAttack;
 	[HideInInspector] public Rigidbody2D rigidBody2D;
     [HideInInspector] public Collider2D playerCollider2D;
-    [HideInInspector] public GameObject beam;
+	[HideInInspector] public GameObject beam;
 
     // Use this for initialization
     void Start () {

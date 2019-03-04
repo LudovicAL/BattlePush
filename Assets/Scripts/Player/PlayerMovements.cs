@@ -9,8 +9,8 @@ public class PlayerMovements : MonoBehaviour {
 
     private float movementSpeed = 5f;
     public float maxSpeed = 25f;
-    public float aimingTreshold = 0.75f;
-    public float movingTreshold = 0.15f;
+    public float aimingThreshold = 0.75f;
+    public float movingThreshold = 0.15f;
 
 
     // Start is called before the first frame update
@@ -25,10 +25,10 @@ public class PlayerMovements : MonoBehaviour {
         float xTarget = player.playerId.controls.GetRHorizontal();
         float yTarget = player.playerId.controls.GetRVertical();
 
-        if (Mathf.Abs(xTarget) + Mathf.Abs(yTarget) > aimingTreshold) {
+        if (Mathf.Abs(xTarget) + Mathf.Abs(yTarget) > aimingThreshold) {
             Vector2 target = new Vector2(xTarget, -yTarget);
             float angle = Mathf.Atan2(target.x, target.y) * Mathf.Rad2Deg;
-            this.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
 
         // Movement

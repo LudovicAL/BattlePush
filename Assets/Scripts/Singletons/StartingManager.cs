@@ -3,34 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StartingManager : MonoBehaviour
-{
-    public Text countDown;
+public class StartingManager : MonoBehaviour {
+    public Text countDownText;
+	public int countDownStart;
 
-    private IEnumerator startCountDown()
-    {
-        for (int i = 3; i >= 0; i--)
-        {
-            countDown.text = (i==0)?"Let's Go!":i.ToString();
-            yield return new WaitForSeconds(0.9f);
+    private IEnumerator countDown() {
+        for (int i = countDownStart; i >= 0; i--) {
+            countDownText.text = (i == 0)? "Let's Go!" : i.ToString();
+            yield return new WaitForSeconds(0.7f);
         }
-        nextState();
-    }
+		GameStatesManager.Instance.ChangeGameStateTo(GameStatesManager.AvailableGameStates.Playing);
+	}
 
     // Start is called before the first frame update
-    void Start()
-    {
-        countDown.text = "";
-    }
+    void Start() {
+		countDownText.text = countDownStart.ToString();
+		GameStatesManager.Instance.GameStateChanged.AddListener(OnGameStateChange);
+	}
 
     // Update is called once per frame
-    void Update()
-    {
-        if (GameStatesManager.Instance.gameState.Equals(GameStatesManager.AvailableGameStates.Starting)) {
-            StartCoroutine(startCountDown());
-        }
+    void Update() {
+        
     }
-    private void nextState() {
-        GameStatesManager.Instance.ChangeGameStateTo(GameStatesManager.AvailableGameStates.Playing);
-    } 
+
+
+	//Called when the GameState changes
+	private void OnGameStateChange() {
+		if (GameStatesManager.Instance.gameState == GameStatesManager.AvailableGameStates.Starting) {
+			StartCoroutine(countDown());
+		}
+	}
 }

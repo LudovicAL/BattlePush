@@ -18,7 +18,6 @@ public class PlayerLeavingTeamEvent : UnityEvent<PlayerId> {}
 
 public class PlayerListManager : MonoBehaviour {
 	public int maxNumPlayers;
-    public Text errorText;
 	public List<PlayerId> listOfPlayers {get; private set;}
     public List<PlayerId> listOfPlayersNull { get; private set; }
     public List<PlayerId> listOfPlayersRed { get; private set; }
@@ -59,8 +58,6 @@ public class PlayerListManager : MonoBehaviour {
 					if (listOfPlayersNull.Count == 0 && (listOfPlayersRed.Count != 0 && listOfPlayersBlue.Count != 0)) {
 						GameStatesManager.Instance.ChangeGameStateTo(GameStatesManager.AvailableGameStates.Starting);
 						break;
-					} else {
-						errorText.text = "You must have one player min. in each team and no one in the middle";
 					}
 				}
 				if (listOfPlayers[i].controls.GetLHorizontal() >= 0.5) {
