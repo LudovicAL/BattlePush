@@ -33,8 +33,13 @@ public class ZoneManager : MonoBehaviour
     {
         zoneCollider = GetComponent<Collider2D>();
 
+        float xFinalPosition = Random.Range(-9.5f, 9.5f);
+        float yFinalPosition = Random.Range(-4.5f, 4.5f);
+
         LerpManager.Instance.StartLerp(IdGetter, LocalScaleXGetter, LocalScaleXSetter, xMinScale, timeToMinScale, LerpManager.LerpMode.SmoothLerp, null);
         LerpManager.Instance.StartLerp(IdGetter, LocalScaleYGetter, LocalScaleYSetter, yMinScale, timeToMinScale, LerpManager.LerpMode.SmoothLerp, null);
+        LerpManager.Instance.StartLerp(IdGetter, LocalPositionXGetter, LocalPositionXSetter, xFinalPosition, timeToMinScale, LerpManager.LerpMode.SmoothLerp, null);
+        LerpManager.Instance.StartLerp(IdGetter, LocalPositionYGetter, LocalPositionYSetter, yFinalPosition, timeToMinScale, LerpManager.LerpMode.SmoothLerp, null);
     }
 
     // Update is called once per frame
@@ -65,5 +70,25 @@ public class ZoneManager : MonoBehaviour
     public void LocalScaleYSetter(float y)
     {
         transform.localScale = new Vector3(transform.localScale.x, y, transform.localScale.z);
+    }
+
+    public float LocalPositionXGetter()
+    {
+        return transform.localPosition.x;
+    }
+
+    public float LocalPositionYGetter()
+    {
+        return transform.localPosition.y;
+    }
+
+    public void LocalPositionXSetter(float x)
+    {
+        transform.localPosition = new Vector3(x, transform.localPosition.y, transform.localPosition.z);
+    }
+
+    public void LocalPositionYSetter(float y)
+    {
+        transform.localPosition = new Vector3(transform.localPosition.x, y, transform.localPosition.z);
     }
 }
