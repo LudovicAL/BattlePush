@@ -24,6 +24,7 @@ public class PlayerActions : MonoBehaviour {
 				} else {    //PULL
 					beam.attackType = Beam.AttackType.Pull;
 				}
+				beam.SetMaterial();
 				player.beam.SetActive(true);
 			} else {
 				player.beam.SetActive(false);

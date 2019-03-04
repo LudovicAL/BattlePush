@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 811760153489930144}
   - component: {fileID: 1994226615128394166}
-  - component: {fileID: 8075184176171880684}
+  - component: {fileID: 2018087168899962789}
   m_Layer: 9
   m_Name: Pillier
   m_TagString: Untagged
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &8075184176171880684
+--- !u!61 &2018087168899962789
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,7 +104,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
 --- !u!1 &5345435107117782833
 GameObject:
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5345435107117782839}
   - component: {fileID: 5345435107117782838}
-  - component: {fileID: 5345435107117782836}
+  - component: {fileID: 1190999382312320223}
   m_Layer: 9
   m_Name: Pillier
   m_TagString: Untagged
@@ -186,7 +186,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5345435107117782836
+--- !u!61 &1190999382312320223
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -210,7 +210,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
 --- !u!1 &5345435107590494246
 GameObject:
@@ -222,7 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5345435107590494244}
   - component: {fileID: 5345435107590494247}
-  - component: {fileID: 5345435107590494245}
+  - component: {fileID: 543712876860189735}
   m_Layer: 9
   m_Name: Pillier
   m_TagString: Untagged
@@ -292,7 +292,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5345435107590494245
+--- !u!61 &543712876860189735
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -316,7 +316,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
 --- !u!1 &5345435108247950334
 GameObject:
@@ -328,7 +328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5345435108247950332}
   - component: {fileID: 5345435108247950335}
-  - component: {fileID: 5345435108247950333}
+  - component: {fileID: 6189566676094551073}
   m_Layer: 9
   m_Name: Pillier
   m_TagString: Untagged
@@ -398,7 +398,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5345435108247950333
+--- !u!61 &6189566676094551073
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -422,7 +422,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
 --- !u!1 &5345435108558047924
 GameObject:
@@ -550,7 +550,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5345435108670986574}
   - component: {fileID: 5345435108670986569}
-  - component: {fileID: 5345435108670986575}
+  - component: {fileID: 3919958256617080680}
   m_Layer: 9
   m_Name: Pillier
   m_TagString: Untagged
@@ -620,7 +620,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5345435108670986575
+--- !u!61 &3919958256617080680
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -644,7 +644,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
 --- !u!1 &7140553368899190258
 GameObject:
@@ -674,7 +674,7 @@ Transform:
   m_GameObject: {fileID: 7140553368899190258}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 1}
+  m_LocalScale: {x: 10, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 5345435108652142462}
   m_RootOrder: 0
@@ -805,5 +805,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToMinScale: 10000
-  xMinScale: 1
+  xMinScale: 2
   yMinScale: 1

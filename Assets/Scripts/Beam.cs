@@ -36,7 +36,7 @@ public class Beam : MonoBehaviour {
 		beamMeshFilter.mesh = beamMesh;
 	}
 
-	private void OnEnable() {
+	public void SetMaterial() {
 		if (beamMeshRenderer) {
 			if (attackType == AttackType.Push) {
 				beamMeshRenderer.material = pushMaterial;
@@ -112,7 +112,7 @@ public class Beam : MonoBehaviour {
 		List<Vector3> viewPoints = new List<Vector3>();
 		ViewCastInfo oldViewCast = new ViewCastInfo();
 		for (int i = 0; i <= stepCount; i++) {
-			float angle = transform.eulerAngles.z - beamAngle / 2 + stepAngleSize * i;
+			float angle = (-transform.eulerAngles.z) - beamAngle / 2 + stepAngleSize * i;
 			ViewCastInfo newViewCast = ViewCast(angle);
 			if (i > 0) {
 				bool edgeDistanceThresholdExceeded = Mathf.Abs(oldViewCast.distance - newViewCast.distance) > edgeDistanceThreshold;

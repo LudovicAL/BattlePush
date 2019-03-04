@@ -7,7 +7,7 @@ public class ZoneManager : MonoBehaviour {
     private Collider2D zoneCollider;
     public static ZoneManager Instance { get; private set; }
     public float timeToMinScale = 100;
-    public float xMinScale = 1;
+    public float xMinScale = 2;
     public float yMinScale = 1;
 
     public bool IsInTheZone (Collider2D other) {
