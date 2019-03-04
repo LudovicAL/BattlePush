@@ -31,20 +31,30 @@ public class ZoneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        zoneCollider = GetComponent<Collider2D>();
-
-        float xFinalPosition = Random.Range(-9.5f, 9.5f);
-        float yFinalPosition = Random.Range(-4.5f, 4.5f);
-
-        LerpManager.Instance.StartLerp(IdGetter, LocalScaleXGetter, LocalScaleXSetter, xMinScale, timeToMinScale, LerpManager.LerpMode.SmoothLerp, null);
-        LerpManager.Instance.StartLerp(IdGetter, LocalScaleYGetter, LocalScaleYSetter, yMinScale, timeToMinScale, LerpManager.LerpMode.SmoothLerp, null);
-        LerpManager.Instance.StartLerp(IdGetter, LocalPositionXGetter, LocalPositionXSetter, xFinalPosition, timeToMinScale, LerpManager.LerpMode.SmoothLerp, null);
-        LerpManager.Instance.StartLerp(IdGetter, LocalPositionYGetter, LocalPositionYSetter, yFinalPosition, timeToMinScale, LerpManager.LerpMode.SmoothLerp, null);
+        GameStatesManager.Instance.GameStateChanged.AddListener(OnGameStateChange);
+        OnGameStateChange();
     }
 
     // Update is called once per frame
     void Update()
     {
+    }
+
+    //Called when the GameState changes
+    private void OnGameStateChange()
+    {
+        if (GameStatesManager.Instance.gameState == GameStatesManager.AvailableGameStates.Playing)
+        {
+            zoneCollider = GetComponent<Collider2D>();
+
+            float xFinalPosition = Random.Range(-9.5f, 9.5f);
+            float yFinalPosition = Random.Range(-4.5f, 4.5f);
+
+            LerpManager.Instance.StartLerp(IdGetter, LocalScaleXGetter, LocalScaleXSetter, xMinScale, timeToMinScale, LerpManager.LerpMode.SmoothLerp, null);
+            LerpManager.Instance.StartLerp(IdGetter, LocalScaleYGetter, LocalScaleYSetter, yMinScale, timeToMinScale, LerpManager.LerpMode.SmoothLerp, null);
+            LerpManager.Instance.StartLerp(IdGetter, LocalPositionXGetter, LocalPositionXSetter, xFinalPosition, timeToMinScale, LerpManager.LerpMode.SmoothLerp, null);
+            LerpManager.Instance.StartLerp(IdGetter, LocalPositionYGetter, LocalPositionYSetter, yFinalPosition, timeToMinScale, LerpManager.LerpMode.SmoothLerp, null);
+        }
     }
 
     public int IdGetter()

@@ -33,7 +33,7 @@ public class PlayerSpawnManager : MonoBehaviour {
 	private void OnPlayerJoining(PlayerId playerId, bool isGameFull) {
 		playerId.avatar = Instantiate(avatarPrefab, playerId.spawnPosition, Quaternion.identity);
 		playerId.avatar.GetComponent<Player>().playerId = playerId;
-	}
+    }
 
 	private void OnPlayerJoiningTeam(PlayerId playerId) {
 		if (playerId.team == PlanelJoinManager.REDTEAM && redSpawnPointList.Count() > 0) {

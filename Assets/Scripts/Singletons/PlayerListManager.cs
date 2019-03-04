@@ -98,8 +98,18 @@ public class PlayerListManager : MonoBehaviour {
 			currentPlayerCount = listOfPlayers.Count;
 			bool gameFull = (currentPlayerCount < maxNumPlayers) ? false : true;
 			playerJoining.Invoke(playerId, gameFull);
-		}
+            playerId.avatar.GetComponent<Player>().playerHealth.playerDying.AddListener(OnDying);
+        }
 	}
+
+    private void OnDying(PlayerId playerId)
+    {
+        RemovePlayer(playerId);
+        if (listOfPlayersRed.Count == 0 || listOfPlayersBlue.Count == 0)
+        {
+            GameStatesManager.Instance.ChangeGameStateTo(GameStatesManager.AvailableGameStates.Ending);
+        }
+    }
 
     private void SwitchPlayerList(PlayerId playerId, List<PlayerId> listDest, List<PlayerId> listSource) {
         if (!listDest.Contains(playerId) && (listSource.Contains(playerId)|| listOfPlayersNull.Contains(playerId))) {

@@ -493,7 +493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelHealthBarPrefab: {fileID: 1347266579008018, guid: fa5211793cf4eb444aa6fbe11b8291e3,
     type: 3}
-  healthBarScale: {x: 0.1, y: 0.01, z: 1}
+  healthBarScale: {x: 0.05, y: 0.01, z: 1}
 --- !u!114 &1782535861
 MonoBehaviour:
   m_ObjectHideFlags: 0
