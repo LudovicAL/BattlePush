@@ -8,6 +8,7 @@ public class Beam : MonoBehaviour {
 
 	public float beamStrength;
 	public ForceMode2D beamForceMode;
+	public float maxBeamEffect;
 	public float beamRadius;
 	public float beamAngle;
 	public float meshResolution;
@@ -42,8 +43,11 @@ public class Beam : MonoBehaviour {
 
 	private void PushPull() {
 		foreach (Transform target in visibleTargets) {
-			Vector3 directionToTarget = (target.position - transform.position).normalized;
-			target.GetComponent<Rigidbody2D>().AddForce(directionToTarget * beamStrength * Time.deltaTime, beamForceMode);
+			Rigidbody2D rb = target.GetComponent<Rigidbody2D>();
+			if (rb.velocity.magnitude < maxBeamEffect) {
+				Vector3 directionToTarget = (target.position - transform.position).normalized;
+				rb.AddForce(directionToTarget * beamStrength * Time.deltaTime, beamForceMode);
+			}
 		}
 	}
 

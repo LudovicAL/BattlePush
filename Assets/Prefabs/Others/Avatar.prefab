@@ -276,6 +276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beamStrength: 300
   beamForceMode: 1
+  maxBeamEffect: 35
   beamRadius: 6
   beamAngle: 22
   meshResolution: 0.2
@@ -380,7 +381,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beamStrength: -400
   beamForceMode: 1
-  beamRadius: 7
+  maxBeamEffect: 35
+  beamRadius: 8
   beamAngle: 18
   meshResolution: 0.2
   edgeResolveIterations: 6

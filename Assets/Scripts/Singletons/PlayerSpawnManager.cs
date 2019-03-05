@@ -32,7 +32,7 @@ public class PlayerSpawnManager : MonoBehaviour {
 	}
 
 	private void OnPlayerJoining(PlayerId playerId, bool isGameFull) {
-		playerId.avatar = Instantiate(avatarPrefab);
+		playerId.avatar = Instantiate(avatarPrefab, Vector3.zero, Quaternion.identity);
 		playerId.player = playerId.avatar.GetComponent<Player>();
 		playerId.player.playerId = playerId;
     }

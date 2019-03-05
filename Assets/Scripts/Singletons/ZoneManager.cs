@@ -43,7 +43,6 @@ public class ZoneManager : MonoBehaviour {
 			LerpManager.Instance.StartLerp(IdGetter, LocalPositionXGetter, LocalPositionXSetter, xFinalPosition, timeToMinScale, LerpManager.LerpMode.SmoothLerp, null);
 			LerpManager.Instance.StartLerp(IdGetter, LocalPositionYGetter, LocalPositionYSetter, yFinalPosition, timeToMinScale, LerpManager.LerpMode.SmoothLerp, null);
 		}
-
     }
 
     public int IdGetter() {
