@@ -15,12 +15,4 @@ public class PlayerAttack : MonoBehaviour {
     // Update is called once per frame
     void Update() {
     }
-
-    public void SetPusherActivation(bool activate) {
-    	player.beam.SetActive(activate);
-    }
-
-    public void SetPullerActivation(bool activate) {
-    	player.beam.SetActive(activate);
-    }
 }

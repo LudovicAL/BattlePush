@@ -6,14 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(MeshRenderer))]
 public class Beam : MonoBehaviour {
 
-	public enum AttackType {
-		Push,
-		Pull
-	}
-
-	public Material pushMaterial;
-	public Material pullMaterial;
 	public float beamStrength;
+	public ForceMode2D beamForceMode;
 	public float beamRadius;
 	public float beamAngle;
 	public float meshResolution;
@@ -26,7 +20,6 @@ public class Beam : MonoBehaviour {
 	public LayerMask targetMask;
 	public LayerMask obstacleMask;
 	[HideInInspector] public List<Transform> visibleTargets= new List<Transform>();
-	[HideInInspector] public AttackType attackType = AttackType.Push;
 
 	// Start is called before the first frame update
 	void Start() {
@@ -34,16 +27,6 @@ public class Beam : MonoBehaviour {
 		beamMeshRenderer = GetComponent<MeshRenderer>();
 		beamMesh = new Mesh();
 		beamMeshFilter.mesh = beamMesh;
-	}
-
-	public void SetMaterial() {
-		if (beamMeshRenderer) {
-			if (attackType == AttackType.Push) {
-				beamMeshRenderer.material = pushMaterial;
-			} else if (attackType == AttackType.Pull) {
-				beamMeshRenderer.material = pullMaterial;
-			}
-		}
 	}
 
 	private void Update() {
@@ -60,7 +43,7 @@ public class Beam : MonoBehaviour {
 	private void PushPull() {
 		foreach (Transform target in visibleTargets) {
 			Vector3 directionToTarget = (target.position - transform.position).normalized;
-			target.GetComponent<Rigidbody2D>().AddForce(directionToTarget * beamStrength * Time.deltaTime, ForceMode2D.Force);
+			target.GetComponent<Rigidbody2D>().AddForce(directionToTarget * beamStrength * Time.deltaTime, beamForceMode);
 		}
 	}
 

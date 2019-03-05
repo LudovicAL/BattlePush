@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class StartingManager : MonoBehaviour {
     public Text countDownText;
 	public int countDownStart;
+	public Text endText;
 
     private IEnumerator countDown() {
         for (int i = countDownStart; i >= 0; i--) {
@@ -23,7 +24,7 @@ public class StartingManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        
+		    
     }
 
 
@@ -31,6 +32,16 @@ public class StartingManager : MonoBehaviour {
 	private void OnGameStateChange() {
 		if (GameStatesManager.Instance.gameState == GameStatesManager.AvailableGameStates.Starting) {
 			StartCoroutine(countDown());
+		} else if (GameStatesManager.Instance.gameState == GameStatesManager.AvailableGameStates.Ending) {
+			if (PlayerListManager.Instance.listOfPlayersRed.Count > 0 && PlayerListManager.Instance.listOfPlayersBlue.Count > 0) {
+				endText.text = "Les deux équipes ont gagné... bravo Ludo... c'est toi qui a programmé ce boutte là.";
+			} else if (PlayerListManager.Instance.listOfPlayersRed.Count > 0) {
+				endText.text = "Les rouges gagnent. Dans les dents les bleus!";
+			} else if (PlayerListManager.Instance.listOfPlayersBlue.Count > 0) {
+				endText.text = "Les bleus gagnent. Ils ont probablement triché.";
+			} else {
+				endText.text = "Personne ne gagne... c'est quoi ce jeu?";
+			}
 		}
 	}
 }

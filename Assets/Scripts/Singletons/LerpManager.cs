@@ -23,7 +23,6 @@ public class LerpManager: MonoBehaviour {
 		} else if (Instance != this) {
 			Destroy(gameObject);
 		}
-		DontDestroyOnLoad(gameObject);
 	}
 
 	private class LerpObject {

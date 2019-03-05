@@ -18,10 +18,11 @@ public class Player : MonoBehaviour {
 	[HideInInspector] public PlayerAttack playerAttack;
 	[HideInInspector] public Rigidbody2D rigidBody2D;
     [HideInInspector] public Collider2D playerCollider2D;
-	[HideInInspector] public GameObject beam;
+	[HideInInspector] public GameObject pushBeam;
+	[HideInInspector] public GameObject pullBeam;
 
-    // Use this for initialization
-    void Start () {
+	// Use this for initialization
+	void Start () {
 		playerActions = GetComponent<PlayerActions>();
 		playerHealth = GetComponent<PlayerHealth>();
 		playerHealthBar = GetComponent<PlayerHealthBar>();
@@ -29,7 +30,8 @@ public class Player : MonoBehaviour {
 		playerAttack = GetComponent<PlayerAttack>();
 		rigidBody2D = GetComponent<Rigidbody2D>();
         playerCollider2D = GetComponent<Collider2D>();
-        beam = transform.Find("Beam").gameObject;
+        pushBeam = transform.Find("PushBeam").gameObject;
+		pullBeam = transform.Find("PullBeam").gameObject;
 	}
 	
 	// Update is called once per frame

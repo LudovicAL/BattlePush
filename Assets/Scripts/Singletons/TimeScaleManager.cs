@@ -18,7 +18,6 @@ public class TimeScaleManager : MonoBehaviour {
 		} else if (Instance != this) {
 			Destroy(gameObject);
 		}
-		DontDestroyOnLoad(gameObject);
 	}
 
 	// Start is called before the first frame update

@@ -32,13 +32,12 @@ public class GameStatesManager : MonoBehaviour {
         } else if (Instance != this) {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
 
-        //Sets the GameState at launch
-        ChangeGameStateTo(gameStateAtLaunch);
+		//Registers the events
+		GameStateChanged = new UnityEvent();
 
-        //Registers the events
-        GameStateChanged = new UnityEvent();       
+		//Sets the GameState at launch
+		ChangeGameStateTo(gameStateAtLaunch);
     }
 
 	//Call this function from anywhere to request a game state change

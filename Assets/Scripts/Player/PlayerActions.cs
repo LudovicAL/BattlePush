@@ -7,28 +7,17 @@ using UnityEngine.Events;
 public class PlayerActions : MonoBehaviour {
 
 	[HideInInspector] public Player player;
-	private Beam beam;
 
 	// Use this for initialization
 	void Start () {
 		player = GetComponent<Player>();
-		beam = player.beam.GetComponent<Beam>();
 	}
 
 	// Update is called once per frame
 	void Update () {
 		if (GameStatesManager.Instance.gameState == GameStatesManager.AvailableGameStates.Playing) {
-			if (player.playerId.controls.GetRBumper() || player.playerId.controls.GetLBumper()) {
-				if (player.playerId.controls.GetRBumper()) {    //PUSH
-					beam.attackType = Beam.AttackType.Push;
-				} else {    //PULL
-					beam.attackType = Beam.AttackType.Pull;
-				}
-				beam.SetMaterial();
-				player.beam.SetActive(true);
-			} else {
-				player.beam.SetActive(false);
-			}
+			player.pushBeam.SetActive(player.playerId.controls.GetRBumper());
+			player.pullBeam.SetActive(player.playerId.controls.GetLBumper());
 		}
 	}
 }

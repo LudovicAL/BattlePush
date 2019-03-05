@@ -21,7 +21,6 @@ public class PlayerSpawnManager : MonoBehaviour {
 		} else if (Instance != this) {
 			Destroy(gameObject);
 		}
-		DontDestroyOnLoad(gameObject);
 	}
 
 	// Use this for initialization
