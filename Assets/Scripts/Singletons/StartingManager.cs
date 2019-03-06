@@ -33,12 +33,14 @@ public class StartingManager : MonoBehaviour {
 		if (GameStatesManager.Instance.gameState == GameStatesManager.AvailableGameStates.Starting) {
 			StartCoroutine(countDown());
 		} else if (GameStatesManager.Instance.gameState == GameStatesManager.AvailableGameStates.Ending) {
-			if (PlayerListManager.Instance.listOfPlayersRed.Count > 0 && PlayerListManager.Instance.listOfPlayersBlue.Count > 0) {
+            AudioManager.Instance.StopClip(AudioManager.Instance.AmbianceClip);
+            AudioManager.Instance.PlayClip(AudioManager.Instance.VictoryClip);
+            if (PlayerListManager.Instance.listOfPlayersRed.Count > 0 && PlayerListManager.Instance.listOfPlayersBlue.Count > 0) {
 				endText.text = "Les deux équipes ont gagné... bravo Ludo... c'est toi qui a programmé ce boutte là.";
 			} else if (PlayerListManager.Instance.listOfPlayersRed.Count > 0) {
-				endText.text = "Les rouges gagnent. Dans les dents les bleus!";
+				endText.text = "Les rouges gagnent. Ils ont probablement triché.";
 			} else if (PlayerListManager.Instance.listOfPlayersBlue.Count > 0) {
-				endText.text = "Les bleus gagnent. Ils ont probablement triché.";
+				endText.text = "Les bleus gagnent. Dans les dents les rouges!";
 			} else {
 				endText.text = "Personne ne gagne... c'est quoi ce jeu?";
 			}

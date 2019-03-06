@@ -36,7 +36,8 @@ public class ZoneManager : MonoBehaviour {
     //Called when the GameState changes
     private void OnGameStateChange() {
 		if (GameStatesManager.Instance.gameState == GameStatesManager.AvailableGameStates.Playing) {
-			float xFinalPosition = Random.Range(-9.5f, 9.5f);
+            AudioManager.Instance.PlayClip(AudioManager.Instance.AmbianceClip);
+            float xFinalPosition = Random.Range(-9.5f, 9.5f);
 			float yFinalPosition = Random.Range(-4.5f, 4.5f);
 			LerpManager.Instance.StartLerp(IdGetter, LocalScaleXGetter, LocalScaleXSetter, xMinScale, timeToMinScale, LerpManager.LerpMode.SmoothLerp, null);
 			LerpManager.Instance.StartLerp(IdGetter, LocalScaleYGetter, LocalScaleYSetter, yMinScale, timeToMinScale, LerpManager.LerpMode.SmoothLerp, null);

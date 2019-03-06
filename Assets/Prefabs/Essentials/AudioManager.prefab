@@ -60,6 +60,7 @@ MonoBehaviour:
   playerLeavingClip: {fileID: 8300000, guid: 44d7d3f97ed49b14b8f47c935321b883, type: 3}
   ticTacClip: {fileID: 8300000, guid: 90d2132fac67106449bd37fd5df75c06, type: 3}
   VictoryClip: {fileID: 8300000, guid: 12225fb38c1ced5478c3ada35b9b0ebb, type: 3}
+  AmbianceClip: {fileID: 8300000, guid: 3571c2e154198ee439c9bf6f85cfeb44, type: 3}
   WarningClip: {fileID: 8300000, guid: d48a40f4a9fb9d84c8cf230c5f882d78, type: 3}
   listOfMiscClips:
   - {fileID: 8300000, guid: de80b17080e8fc74b99e06f6fd6ff13a, type: 3}
